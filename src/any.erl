@@ -14,6 +14,7 @@
 
 -module(any).
 -export([to_atom/1]).
+-export([to_binary/1]).
 -export([to_boolean/1]).
 -export([to_float/1]).
 -export([to_integer/1]).
@@ -21,45 +22,36 @@
 
 -spec to_boolean(list() | binary() | boolean()) -> boolean().
 
-to_boolean(<<"true">>) ->
-    true;
-to_boolean("true") ->
-    true;
-to_boolean(<<"false">>) ->
-    false;
-to_boolean("false") ->
-    false;
-to_boolean(false) ->
-    false;
-to_boolean(true) ->
-    true.
+to_boolean(<<"true">>) -> true;
+to_boolean("true") -> true;
+to_boolean(<<"false">>) -> false;
+to_boolean("false") -> false;
+to_boolean(false) -> false;
+to_boolean(true) -> true.
 
 
 -spec to_integer(integer() | list() | binary()) -> integer().
 
-to_integer(X) when is_integer(X) ->
-    X;
-to_integer(X) when is_list(X) ->
-    list_to_integer(X);
-to_integer(X) when is_binary(X) ->
-    to_integer(binary_to_list(X)).
+to_integer(X) when is_integer(X) -> X;
+to_integer(X) when is_list(X) -> list_to_integer(X);
+to_integer(X) when is_binary(X) -> to_integer(binary_to_list(X)).
 
 
 -spec to_atom(atom() | list() | binary()) -> atom().
 
-to_atom(X) when is_atom(X) ->
-    X;
-to_atom(X) when is_list(X) ->
-    list_to_atom(X);
-to_atom(X) when is_binary(X) ->
-    to_atom(binary_to_list(X)).
+to_atom(X) when is_atom(X) -> X;
+to_atom(X) when is_list(X) -> list_to_atom(X);
+to_atom(X) when is_binary(X) -> to_atom(binary_to_list(X)).
 
 
 -spec to_float(float() | list() | binary()) -> float().
 
-to_float(X) when is_float(X) ->
-    X;
-to_float(X) when is_list(X) ->
-    list_to_float(X);
-to_float(X) when is_binary(X) ->
-    to_float(binary_to_list(X)).
+to_float(X) when is_float(X) -> X;
+to_float(X) when is_list(X) -> list_to_float(X);
+to_float(X) when is_binary(X) -> to_float(binary_to_list(X)).
+
+
+to_binary(X) when is_binary(X) -> X;
+to_binary(X) when is_list(X) -> list_to_binary(X);
+to_binary(X) when is_integer(X) -> to_binary(integer_to_list(X));
+to_binary(X) when is_float(X) -> to_binary(float_to_list(X)).

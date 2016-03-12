@@ -47,6 +47,29 @@ prop_float_to_float() ->
     ?FORALL(X, real(), X =:= any:to_float(X)).
 
 
+prop_binary_to_binary() ->
+    ?FORALL(X, binary(), X =:= any:to_binary(X)).
+
+prop_list_to_binary() ->
+    ?FORALL(X, binary(), X =:= any:to_binary(binary_to_list(X))).
+
+prop_integer_to_binary() ->
+    ?FORALL(X, int(),
+            begin
+                ?assertEqual(list_to_binary(integer_to_list(X)),
+                             any:to_binary(X)),
+                    true
+            end).
+
+prop_float_to_binary() ->
+    ?FORALL(X, real(),
+            begin
+                ?assertEqual(list_to_binary(float_to_list(X)),
+                             any:to_binary(X)),
+                    true
+            end).
+
+
 
 any_test_() ->
     ?_assert(triq:module(?MODULE)).
