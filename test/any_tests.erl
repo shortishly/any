@@ -69,6 +69,14 @@ prop_float_to_binary() ->
                     true
             end).
 
+prop_atom_to_binary() ->
+    ?FORALL(X, atom(),
+            begin
+                ?assertEqual(list_to_binary(atom_to_list(X)),
+                             any:to_binary(X)),
+                    true
+            end).
+
 
 
 any_test_() ->
