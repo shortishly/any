@@ -1,7 +1,7 @@
 # Any
 
-Convert a string or binary representing an integer, float or atom into
-an integer, float or atom.
+Convert a list or binary representing an integer, float or atom into
+an integer, float or atom and vise versa.
 
 ## Examples
 

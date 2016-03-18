@@ -78,6 +78,18 @@ prop_atom_to_binary() ->
             end).
 
 
+prop_binary_to_list() ->
+    ?FORALL(X, binary(), X =:= list_to_binary(any:to_list(X))).
+
+prop_atom_to_list() ->
+    ?FORALL(X, atom(), X =:= list_to_atom(any:to_list(X))).
+
+prop_integer_to_list() ->
+    ?FORALL(X, int(), X =:= list_to_integer(any:to_list(X))).
+
+prop_float_to_list() ->
+    ?FORALL(X, real(), X =:= list_to_float(any:to_list(X))).
+
 
 any_test_() ->
     ?_assert(triq:module(?MODULE)).

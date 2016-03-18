@@ -13,11 +13,13 @@
 %% limitations under the License.
 
 -module(any).
+
 -export([to_atom/1]).
 -export([to_binary/1]).
 -export([to_boolean/1]).
 -export([to_float/1]).
 -export([to_integer/1]).
+-export([to_list/1]).
 
 
 -spec to_boolean(list() | binary() | boolean()) -> boolean().
@@ -56,3 +58,11 @@ to_binary(X) when is_list(X) -> list_to_binary(X);
 to_binary(X) when is_integer(X) -> to_binary(integer_to_list(X));
 to_binary(X) when is_float(X) -> to_binary(float_to_list(X));
 to_binary(X) when is_atom(X) -> to_binary(atom_to_list(X)).
+
+-spec to_list(list() | binary() | atom() | integer() | float()) -> list().
+
+to_list(X) when is_list(X) -> X;
+to_list(X) when is_binary(X) -> binary_to_list(X);
+to_list(X) when is_atom(X) -> atom_to_list(X);
+to_list(X) when is_integer(X) -> integer_to_list(X);
+to_list(X) when is_float(X) -> float_to_list(X).
