@@ -2,10 +2,18 @@ image: erlang
 
 stages:
   - build
+  - test
 
 app:
   stage: build
   script:
     - make
+  only:
+    - master
+
+unit:
+  stage: test
+  script:
+    - make eunit
   only:
     - master
