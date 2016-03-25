@@ -1,19 +1,9 @@
-image: erlang
+image: reg001.local:5000/shortishly/erlang-docker
 
-stages:
-  - build
-  - test
+types:
+    - build
 
-app:
-  stage: build
-  script:
-    - make
-  only:
-    - master
-
-unit:
-  stage: test
-  script:
-    - make eunit
-  only:
-    - master
+build:
+    type: build
+    script:
+        - make
