@@ -15,4 +15,11 @@
 #
 PROJECT = any
 TEST_DEPS = triq
+
+PLT_APPS = \
+	compiler \
+	crypto \
+	hipe \
+	syntax_tools
+
 include erlang.mk
