@@ -2,7 +2,6 @@
  [{description, "Convert a list or binary representing an integer, float or atom into an integer, float or atom and vise versa"},
   {vsn, "0.1.0"},
   {registered, []},
-  {mod, { any_app, []}},
   {applications,
    [kernel,
     stdlib
