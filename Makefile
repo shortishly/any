@@ -23,3 +23,6 @@ PLT_APPS = \
 	syntax_tools
 
 include erlang.mk
+
+# Generate rebar.config on build.
+app:: rebar.config
