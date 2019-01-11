@@ -52,6 +52,14 @@ to_float(X) when is_float(X) -> X;
 to_float(X) when is_list(X) -> list_to_float(X);
 to_float(X) when is_binary(X) -> to_float(binary_to_list(X)).
 
+-spec to_binary(binary() |
+                list() |
+                integer() |
+                float() |
+                atom() |
+                pid() |
+                port() |
+                reference()) -> binary().
 
 to_binary(X) when is_binary(X) -> X;
 to_binary(X) when is_list(X) -> list_to_binary(X);
@@ -59,6 +67,7 @@ to_binary(X) when is_integer(X) -> to_binary(integer_to_list(X));
 to_binary(X) when is_float(X) -> to_binary(float_to_list(X));
 to_binary(X) when is_atom(X) -> to_binary(atom_to_list(X));
 to_binary(X) when is_pid(X) -> to_binary(pid_to_list(X));
+to_binary(X) when is_port(X) -> to_binary(port_to_list(X));
 to_binary(X) when is_reference(X) -> to_binary(to_list(X)).
 
 
@@ -68,6 +77,8 @@ to_binary(X) when is_reference(X) -> to_binary(to_list(X)).
         atom() |
         integer() |
         float() |
+        port() |
+        pid() |
         reference()) -> list().
 
 to_list(X) when is_list(X) -> X;
@@ -76,4 +87,5 @@ to_list(X) when is_atom(X) -> atom_to_list(X);
 to_list(X) when is_integer(X) -> integer_to_list(X);
 to_list(X) when is_float(X) -> float_to_list(X);
 to_list(X) when is_pid(X) -> pid_to_list(X);
+to_list(X) when is_port(X) -> port_to_list(X);
 to_list(X) when is_reference(X) -> erlang:ref_to_list(X).
