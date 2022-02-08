@@ -1,5 +1,5 @@
 #-*- mode: makefile-gmake -*-
-# Copyright (c) 2016 Peter Morgan <peter.james.morgan@gmail.com>
+# Copyright (c) 2016-2022 Peter Morgan <peter.james.morgan@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,13 +16,15 @@
 PROJECT = any
 TEST_DEPS = triq
 
+COVER = 1
+
 PLT_APPS = \
 	compiler \
 	crypto \
-	hipe \
 	syntax_tools
 
 include erlang.mk
 
-# Generate rebar.config on build.
 app:: rebar.config
+
+all:: dialyze tests

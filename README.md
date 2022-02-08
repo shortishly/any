@@ -1,5 +1,7 @@
 # Any
 
+![main](https://github.com/shortishly/any/actions/workflows/main.yml/badge.svg)
+
 Convert a list or binary representing an integer, float or atom into
 an integer, float or atom and vise versa.
 
@@ -46,3 +48,4 @@ false
 17> any:to_boolean(true).
 true
 ```
+
