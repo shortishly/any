@@ -3,8 +3,9 @@ on: [push]
 
 jobs:
   build:
-    matrix:
-      otp: [25.1, 26.0]
+    strategy:
+      matrix:
+        otp: [25.1, 26.0]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
