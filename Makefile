@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 PROJECT = any
+PROJECT_DESCRIPTION = Convert any type into an atom, binary, boolean, float, integer or list
+PROJECT_VERSION = ${shell git describe --tags}
 TEST_DEPS = triq
 
 COVER = 1
@@ -22,6 +24,16 @@ PLT_APPS = \
 	compiler \
 	crypto \
 	syntax_tools
+
+define HEX_TARBALL_EXTRA_METADATA
+#{
+	licenses => [<<"Apache-2">>],
+	links => #{
+		<<"GitHub">> => <<"https://github.com/shortishly/any">>
+	}
+}
+endef
+
 
 include erlang.mk
 
