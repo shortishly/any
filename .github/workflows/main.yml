@@ -28,3 +28,5 @@ jobs:
         with:
           otp-version: 26
       - run: make hex-release-publish
+        env:
+          HEX_SECRET: ${{ secrets.HEX_SECRET }}
